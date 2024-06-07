@@ -1,0 +1,101 @@
+.Flex-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.5rem 3rem;
+}
+
+/* Default styling for .track-heading and .real-time */
+.track-heading, .real-time {
+    font-size: 6rem;
+    margin: 0;
+}
+
+/* Default color for .track-heading */
+.track-heading {
+    color: var(--white);
+}
+
+/* Additional styling for .track-heading when hovering */
+ .track-heading:hover {
+    color: transparent;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black;
+}
+.no-hover {
+    color: transparent;
+
+}
+
+.real-time {
+    color: var(--blue);
+}
+
+.para {
+    padding: 0.5rem 0.7rem;
+    font-size: 1rem;
+    color: var(--darkgray);
+}
+
+.bottombtn {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.animation {
+    width: 40%;
+    position: relative;
+}
+
+.phone {
+    position: absolute;
+    z-index: 100;
+    min-width: 100px;
+    width: 35%;
+    right: 0;
+}
+
+.desktop {
+    position: absolute;
+    min-width: 500px;
+    width: 50%;
+    top: 4rem;
+}
+
+@media only screen and (max-width: 1000px) {
+    .track-heading, .real-time {
+        font-size: 5rem;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .Flex-info {
+        flex-direction: column;
+        padding: 0.5rem 1rem; /* Adjusted padding for smaller screens */
+    }
+    
+    .animation {
+        width: 80%; /* Adjusted width */
+        margin: auto;
+    }
+    
+    .phone {
+        min-width: 50px;
+        width: 30%;
+    }
+    
+    .desktop {
+        min-width: 200px;
+        width: 60%; /* Adjusted width */
+        left: 20%; /* Adjusted left positioning */
+    }
+    
+    .track-heading, .real-time {
+        font-size: 4rem; /* Adjusted font size */
+        margin: 10px 0; /* Adjusted margin */
+        text-align: center;
+    }
+}

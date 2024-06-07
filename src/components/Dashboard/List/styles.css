@@ -1,0 +1,104 @@
+.list-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem;
+  padding: 1.5rem 8rem;
+  width: 90%;
+  border-radius: 0.8rem;
+}
+
+ .list-row:hover{
+  background-color: var(--black);
+  transition: all 0.3s;
+  
+}
+/* to implement no hover effect om coinpage */
+.list-row.no-hover:hover {
+  background-color: initial;
+}
+.list-row td{
+  text-align: left;
+  width: 18%;
+}
+
+.td-image{
+  width: 3rem !important;
+  margin-right:2rem;
+}
+.td-center-align{
+  text-align: center;
+}
+.td-right-align{
+  flex-grow: 1;
+  text-align: right!important;
+  margin-top: auto;
+}
+.current-price{
+  color: aliceblue;
+  cursor: grab;
+}
+ /* .list-row-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}  */
+
+@media only screen and (max-width: 900px) {
+  .icon-chip {
+    display: none;
+  }
+
+  .list-row {
+    font-size: 0.7rem;
+  }
+
+  .td-totalVolume {
+    display: none;
+  }
+
+  .Current-Price {
+    text-align: center !important;
+  }
+
+  .list-row {
+    width: 100%;
+    padding: 1.5rem 0rem;
+  }
+
+  .coin-logo {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .td-info {
+    width: 6rem !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .Desktop-td-mkt,
+  .icon-chip{
+    display: none !important;
+  }
+  .mobile-td-mkt {
+    display: block !important;
+    text-align: left !important;
+  }
+  .td-image,
+  .symbol,
+  .name{
+    font-size: 0.6rem !important;
+  }
+
+  .td-info {
+    width: 4rem !important;
+  }
+
+  .td-image {
+    height: 2rem !important;
+    width: 2rem !important;
+  }
+}

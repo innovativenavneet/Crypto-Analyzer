@@ -1,0 +1,66 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background-color: var(--black);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.link {
+    color: var(--white);
+}
+
+/* initially we don't want it visible */
+.mobile-drawer {
+    display: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .navbar {
+        padding: 1.5rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .links {
+        display: none;
+    }
+
+    .mobile-drawer {
+        display: block;
+    }
+
+    .drawer-div {
+        width: 40vw;
+        background-color: var(--black);
+        height: 100vh;
+        padding: 1.5rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1001; /* Ensure the drawer is above the content */
+    }
+}
+
+/* Ensure content stays below navbar */
+.content {
+    position: relative;
+    z-index: 999; /* Ensure content is below navbar */
+}

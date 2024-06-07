@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import WatchList from "./pages/WatchList";
+import Comparepage from "./pages/Comparepage";
+import CoinPage from "./pages/CoinPage";
 
+// now all of our routes will store here
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>                    
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/WatchList" element={<WatchList />} />
+          <Route path="/Comparepage" element={<Comparepage />} />
+          <Route path="/coin/:id" element={<CoinPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

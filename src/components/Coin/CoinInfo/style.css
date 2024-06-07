@@ -1,0 +1,29 @@
+.coin-info-heading {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.coin-info-desc {
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+.coin-info-desc .read-more,
+.coin-info-desc .read-less {
+    color: var(--blue);
+}
+.coin-info-desc .read-more:hover,
+.coin-info-desc .read-less:hover {
+    background-color: var(--blue);
+    color: var(--black);
+}
+.gray-wrapper {
+    background-color: var(--black);
+    padding: 1rem;
+    padding-bottom: 0.5rem;
+    border-radius: 1rem;
+    width: 90%;
+    margin: 1.5rem auto;
+    text-align: center;
+}

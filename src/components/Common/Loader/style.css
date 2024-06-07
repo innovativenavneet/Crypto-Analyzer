@@ -1,0 +1,11 @@
+.loader-component{
+display: flex;
+justify-content: center;
+align-items: center;
+height:100%;
+width: 100%;
+background-color: var(--black);
+color: var(--blue);
+position: absolute;
+z-index: 1000;
+}

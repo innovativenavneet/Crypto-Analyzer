@@ -1,0 +1,16 @@
+.grid-flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1.5rem;
+  margin: 1.5rem 2rem;
+}
+
+.list-table{
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
