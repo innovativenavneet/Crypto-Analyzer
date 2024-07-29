@@ -83,3 +83,10 @@ body {
  .gray-wrapper:hover {
   background-color: var(--dark); /* Define the hover color variable or replace it with a specific color */
 } 
+
+.coins-days-flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 2rem;
+}
