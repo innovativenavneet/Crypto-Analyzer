@@ -16,18 +16,23 @@ function Header() {
         </Link>
 
         <Link to="/Comparepage">
-          <p className="link">Compare</p>
+
+          <p className="link" onClick={() => console.log("Compare clicked")}>
+          
+          Compare</p>
+      
+      
         </Link>
 
         <Link to="/WatchList">
-          <p className="link">Watchlist</p>
+          <p className="link" >Watchlist</p>
         </Link>
 
         <Link to="/Dashboard">
           <Button
             text={"Dashboard"}
             outlined={true}
-            onClick={() => console.log("fuck you clicked")}
+            onClick={() => console.log("Dashboard clicked")}
           />
         </Link>
       </div>

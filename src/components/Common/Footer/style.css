@@ -1,5 +1,76 @@
-.footer{
-    background-color:yellow ;
+/* Ensure the body takes up the full height and uses Flexbox */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Content class to ensure it takes up available space */
+.content {
+    flex: 1;
+}
+
+/* Footer styles */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background-color: var(--black);
+    z-index: 1000;
+    color: var(--white);
+    flex-shrink: 0; /* Prevent shrinking */
     width: 100%;
-    color: black;
+}
+
+/* Footer heading style */
+.footer h2 {
+    cursor: pointer;
+    font-size: medium;
+    
+    color: var(--white);
+
+}
+
+/* Social links styles */
+.social-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.social-link {
+    color: var(--white);
+    font-size: 2rem !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.social-link:hover {
+    transform: scale(1.2);
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 800px) {
+    .footer {
+        padding: 1.5rem;
+    }
+
+    .footer h2 {
+        font-size: 1rem;
+    }
+
+    .social-links {
+        gap: 0.5rem;
+    }
+
+    .social-link {
+        font-size: 1rem !important;
+    }
 }

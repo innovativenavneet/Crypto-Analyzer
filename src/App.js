@@ -8,16 +8,24 @@ import Comparepage from "./pages/Comparepage";
 import CoinPage from "./pages/CoinPage";
 
 // now all of our routes will store here
+
+
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>                    
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
-          <Route path="/WatchList" element={<WatchList />} />
+
+
+          
+          <Route path="/"                   element={<Home />} />
+          <Route path="/Dashboard"     element={<Dashboard />} />
+          <Route path="/WatchList"     element={<WatchList />} />
           <Route path="/Comparepage" element={<Comparepage />} />
-          <Route path="/coin/:id" element={<CoinPage />} />
+          <Route path="/coin/:id"       element={<CoinPage />} />
+
+
         </Routes>
       </BrowserRouter>
     </div>

@@ -14,7 +14,7 @@
 /* giving Dashboard box a shadow */
 
 .btn:hover{
-    box-shadow: 5px 5px 10px rgba(58, 128, 233, 0.5);
+    box-shadow: 5px 5px 10px rgb(22, 22, 22);
     transition: all 0.3sec;
 }
 .outlined-btn{
@@ -31,6 +31,6 @@
 
 .outlined-btn:hover{
     background-color: var(--blue);
-    box-shadow: 5px 5px 10px rgba(58, 128, 233, 0.5);
+    box-shadow: 5px 5px 10px rgb(22,22,22);
     transition: all 0.3sec;
 }

@@ -9,11 +9,13 @@
   border-radius: 0.8rem;
 }
 
- .list-row:hover{
+.list-row:hover {
   background-color: var(--black);
   transition: all 0.3s;
-  
+  /* padding-right: 15rem; /* Decrease right padding */
+  /* padding-left: 10rem;  Increase left padding */ 
 }
+
 /* to implement no hover effect om coinpage */
 .list-row.no-hover:hover {
   background-color: initial;

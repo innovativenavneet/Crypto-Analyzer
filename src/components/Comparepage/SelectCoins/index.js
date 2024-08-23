@@ -14,7 +14,7 @@ function SelectCoins({ crypto1, crypto2, handleCoinChange }) {
       borderColor: "var(--white)",
     },
     "& .MuiSvgIcon-root": {
-      Color: "var(--white)",
+      color: "var(--white)",
     },
     "&:hover": {
       "&& fieldset": {
@@ -33,8 +33,6 @@ function SelectCoins({ crypto1, crypto2, handleCoinChange }) {
   }
 
   return (
-
-    
     <div className="coin-flex">
       <p>Crypto 1</p>
       <Select
@@ -43,7 +41,11 @@ function SelectCoins({ crypto1, crypto2, handleCoinChange }) {
         label={"crypto 1"}
         onChange={(event) => handleCoinChange(event, false)}
       >
-        {allCoins.map((coin) => (
+        {allCoins
+        
+        .filter((item) => item.id != crypto2) //this will help to recognise that if one coin 
+                                              // there is no place for 2nd coin to select 
+         .map((coin, i) => (  // The index 'i' is now properly defined here
           <MenuItem key={i} value={coin.id}>
             {coin.name}
           </MenuItem>
@@ -56,7 +58,11 @@ function SelectCoins({ crypto1, crypto2, handleCoinChange }) {
         label={"crypto 2"}
         onChange={(event) => handleCoinChange(event, true)}
       >
-        {allCoins.map((coin) => (
+          {allCoins
+        
+        .filter((item) => item.id != crypto1) //this will help to recognise that if one coin 
+                                              // there is no place for 2nd coin to select 
+         .map((coin, i) => (  // The index 'i' is now properly defined here
           <MenuItem key={i} value={coin.id}>
             {coin.name}
           </MenuItem>

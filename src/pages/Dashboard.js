@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Common/Header";
+import Footer from "../components/Common/Footer";
 import TabsComponent from "../components/Dashboard/Tabs";
 import axios from "axios";
 import Search from "../components/Dashboard/Search/index";
@@ -53,12 +54,13 @@ function Dashboard() {
   };
   return (
     <div>
-      <Header />
-      <BackToTOP />
+   
       {isloading ? (
         <Loader />
       ) : (
         <div>
+             <Header />
+             <BackToTOP />
           <Search search={search} onSearchChange={onSearchChange} />
           <TabsComponent coins={search ? filterCoins : pageCoins} />
           {!search && (
@@ -67,8 +69,10 @@ function Dashboard() {
               handlePageChange={handlePageChange}
             />
           )}
+           <Footer />
         </div>
       )}
+       
     </div>
   );
 }

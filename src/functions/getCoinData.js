@@ -9,7 +9,8 @@ export const getCoinData = (id, setError) => {
       }
     })
     .catch((e) => {
-      console.log(e.message);
+
+      console.log("get coin dataerror message ",e.message);
       if (setError) {
         setError(true);
       }

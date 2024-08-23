@@ -1,5 +1,6 @@
 .Flex-info {
     display: flex;
+    flex: 1;
     justify-content: space-between;
     align-items: flex-start;
     padding: 0.5rem 3rem;
