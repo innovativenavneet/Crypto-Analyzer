@@ -12,7 +12,6 @@ import { getPrices } from "../functions/getPrices";
 import LineChart from "../components/Coin/LineChart";
 import SelectDays from "../components/Coin/SelectDays";
 import { settingChartData } from "../functions/settingChartData";
-import PriceType from "../components/Coin/PriceType";
 import TogglePriceType from "../components/Coin/PriceType";
 
 function CoinPage() {

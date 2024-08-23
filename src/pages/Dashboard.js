@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Common/Header";
 import Footer from "../components/Common/Footer";
 import TabsComponent from "../components/Dashboard/Tabs";
-import axios from "axios";
+
 import Search from "../components/Dashboard/Search/index";
 import PaginationComponent from "../components/Dashboard/Pagination";
 import Loader from "../../src/components/Common/Loader";

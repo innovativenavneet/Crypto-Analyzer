@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Header from "../components/Common/Header/index";
 import Footer from "../components/Common/Footer/index.js";
 import SelectCoins from "../components/Comparepage/SelectCoins";
 import SelectDays from "../components/Coin/SelectDays";
 import { CoinObject } from "../functions/CoinObject";
 import { settingChartData } from "../functions/settingChartData.js";
-import { FirstPage } from "@mui/icons-material";
 import { getCoinData } from "../functions/getCoinData.js";
 import { getPrices } from "../functions/getPrices.js";
 import Loader from "../components/Common/Loader/index.js";
@@ -22,7 +21,6 @@ function Comparepage() {
   const [days, setDays] = useState(30);
   const [isLoading, setIsLoading] = useState(true);
   const [priceType, setPriceType] = useState("prices");
-
   const [chartData, setChartData] = useState({});
 
   async function handleDaysChange(event) {
@@ -31,25 +29,22 @@ function Comparepage() {
     setDays(event.target.value);
     const prices1 = await getPrices(crypto1, event.target.value, priceType);
     const prices2 = await getPrices(crypto2, event.target.value, priceType);
-    settingChartData(setChartData,prices1, prices2);
+    settingChartData(setChartData, prices1, prices2);
     setIsLoading(false);
   }
+
   const handlePriceTypeChange = async (event, newType) => {
     setIsLoading(true);
 
     setPriceType(newType);
     const prices1 = await getPrices(crypto1, days, newType);
     const prices2 = await getPrices(crypto2, days, newType);
-    settingChartData(setChartData,prices1, prices2);
-      setIsLoading(false);
-    
+    settingChartData(setChartData, prices1, prices2);
+    setIsLoading(false);
   };
 
-  useEffect(() => {
-    getData();
-  }, [crypto1, crypto2, days]);
-
-  async function getData() {
+  // Use useCallback to ensure getData is memoized and doesn't change on re-renders
+  const getData = useCallback(async () => {
     setIsLoading(true);
     const data1 = await getCoinData(crypto1);
     const data2 = await getCoinData(crypto2);
@@ -67,11 +62,15 @@ function Comparepage() {
 
       if (prices1 && prices1.length > 0 && prices2 && prices2.length > 0) {
         console.log("Both prices fetched", prices1, prices2);
-      settingChartData(setChartData, prices1, prices2);
+        settingChartData(setChartData, prices1, prices2);
         setIsLoading(false);
       }
     }
-  }
+  }, [crypto1, crypto2, days]);
+
+  useEffect(() => {
+    getData();
+  }, [crypto1, crypto2, days, getData]);
 
   const handleCoinChange = async (event, isCoin2) => {
     setIsLoading(true);
@@ -98,12 +97,11 @@ function Comparepage() {
 
   return (
     <div>
-     
       {isLoading ? (
         <Loader />
       ) : (
         <>
-         <Header />
+          <Header />
           <div className="coins-days-flex">
             <SelectCoins
               crypto1={crypto1}
@@ -123,19 +121,21 @@ function Comparepage() {
             <List coin={crypto2Data} />
           </div>
           <div className="gray-wrapper">
-           
             <TogglePriceType
               priceType={priceType}
               handlePriceTypeChange={handlePriceTypeChange}
             />
-            <LineChart chartData={chartData} priceType={priceType} multiAxis={true}/>
+            <LineChart
+              chartData={chartData}
+              priceType={priceType}
+              multiAxis={true}
+            />
           </div>
           <CoinInfo heading={crypto1Data.name} desc={crypto1Data.desc} />
           <CoinInfo heading={crypto2Data.name} desc={crypto2Data.desc} />
-          <Footer/>
+          <Footer />
         </>
       )}
-
     </div>
   );
 }
