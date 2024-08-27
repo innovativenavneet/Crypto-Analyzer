@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./style.css";
 import Button from "../../Common/Button";
@@ -6,13 +7,18 @@ import Desktop from "../../../assets/desktop.png";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-function Maincomponent() {
+export default function Maincomponent() {
   const handleDashboardClick = () => {
     console.log("Dashboard button clicked");
   };
 
   const handleShareClick = () => {
-    console.log("Share button clicked");
+    const shareLink = "https://66c8cad5e850fc90364462e8--navneetprakash.netlify.app/"; 
+    navigator.clipboard.writeText(shareLink).then(() => {
+      alert("Link copied to clipboard!");
+    }).catch(err => {
+      console.error('Could not copy text: ', err);
+    });
   };
 
   return (
@@ -95,4 +101,4 @@ function Maincomponent() {
   );
 }
 
-export default Maincomponent;
+

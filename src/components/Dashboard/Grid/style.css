@@ -1,95 +1,96 @@
- 
 .grid-container {
-    width: 250px;
-    height: 250px;
-    background-color: var(--black);
-    border-radius: 0.75rem;
-    border: 2px solid var(--black);
-    cursor: pointer;
+  position: relative; /* Ensure the grid-container is the reference point for absolute positioning */
+  width: 250px;
+  height: 250px;
+  background-color: var(--black);
+  border-radius: 0.75rem;
+  border: 2px solid var(--black);
+  cursor: pointer;
 }
-.grid-container:hover{
+
+.grid-container:hover {
   border-color: var(--blue);
   transition: all 0.3s;
 }
-.grid-container-red:hover{
-  border-color: var(--red)!important;
+
+.grid-container-red:hover {
+  border-color: var(--red) !important;
   transition: all 0.3s;
 }
-.info-flex {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0.2rem;
-    margin: 1.5rem;
-    
-  }
 
-  .coin-logo {
-    height: 3.5rem; 
-    width: 3.5rem;  
-    border-radius: 50%;
- 
-  }
+.info-flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.2rem;
+  margin: 1.5rem;
+}
+
+.coin-logo {
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+}
 
 .name-col {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem; /* Adjust the gap between the image and text */
-
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Adjust the gap between the image and text */
 }
 
-
-  
-  .symbol{
-    color: var(--white);
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 1.2rem;
-    margin: 0;
-  }
-
-  .name{
-    color: var(--gray);
-    text-transform: capitalize;
-    font-weight: light;
-    font-size:  1rem;
-    margin: 0;
-  }
- 
-.chip-flex{
-    display: flex;
-    justify-content: flex-start;
-    gap: 0.3rem;
-    align-items: center;
-    margin: 0.5rem 0.5rem;
-}
-.price-chip{
-    border: 2px solid var(--blue);
-    border-radius: 2rem;
-    padding: 0.5rem 1.5rem;
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--blue);
+.symbol {
+  color: var(--white);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0;
 }
 
+.name {
+  color: var(--gray);
+  text-transform: capitalize;
+  font-weight: light;
+  font-size: 1rem;
+  margin: 0;
+}
 
-.price-chip:hover,.icon-chip:hover{
+.chip-flex {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  align-items: center;
+  margin: 0.5rem 0.5rem;
+}
+
+.price-chip {
+  border: 2px solid var(--blue);
+  border-radius: 2rem;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--blue);
+}
+
+.price-chip:hover,
+.icon-chip:hover {
   background-color: var(--blue);
   color: var(--white);
   transition: all 0.2s;
 }
-.chip-red{
+
+.chip-red {
   border: 2px solid var(--red) !important;
   color: var(--red) !important;
-
 }
-.chip-red:hover{
-  background-color: var(--red)!important;
-  color: var(--white)!important;
+
+.chip-red:hover {
+  background-color: var(--red) !important;
+  color: var(--white) !important;
   transition: all 0.2s;
 }
-.icon-chip{
+
+.icon-chip {
   border: 2px solid var(--blue);
   border-radius: 50%;
   height: 2rem;
@@ -99,23 +100,22 @@
   align-items: center;
   font-size: 1rem;
   color: var(--blue);
-
 }
 
-.info-container{
+.info-container {
   margin: 0.5rem 2px; /* Adjust margin top and bottom */
   padding: 0.3rem 0.75rem; /* Adjust padding top and bottom */
   display: flex;
-  /* justify-content: flex-start; */
   flex-direction: column;
   align-items: start;
 }
 
-.price{
+.price {
   color: var(--blue);
   font-size: 1.2rem;
   font-weight: 600;
 }
+
 .total_volume {
   color: var(--gray);
   font-size: 0.8rem;
@@ -125,4 +125,45 @@
   display: flex;
   justify-content: flex-start;
   align-items: start;
+}
+
+/* Tooltip styles for favorite icon */
+.favorite-icon-container {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  cursor: pointer;
+  color: var(--gray);
+  transition: color 0.3s;
+}
+
+.favorite-icon {
+  transition: color 0.3s;
+}
+
+.favorite-icon-active {
+  color: var(--red);
+}
+
+.tooltip-text {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.favorite-icon-container:hover .tooltip-text {
+  opacity: 1;
+}
+
+.tooltip-text-active {
+  opacity: 1;
 }

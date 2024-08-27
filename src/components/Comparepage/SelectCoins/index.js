@@ -43,7 +43,7 @@ function SelectCoins({ crypto1, crypto2, handleCoinChange }) {
       >
         {allCoins
         
-        .filter((item) => item.id != crypto2) //this will help to recognise that if one coin 
+        .filter((item) => item.id !== crypto2) //this will help to recognise that if one coin 
                                               // there is no place for 2nd coin to select 
          .map((coin, i) => (  // The index 'i' is now properly defined here
           <MenuItem key={i} value={coin.id}>
@@ -60,7 +60,7 @@ function SelectCoins({ crypto1, crypto2, handleCoinChange }) {
       >
           {allCoins
         
-        .filter((item) => item.id != crypto1) //this will help to recognise that if one coin 
+        .filter((item) => item.id !== crypto1) //this will help to recognise that if one coin 
                                               // there is no place for 2nd coin to select 
          .map((coin, i) => (  // The index 'i' is now properly defined here
           <MenuItem key={i} value={coin.id}>

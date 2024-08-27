@@ -33,9 +33,7 @@ body {
 .footer h2 {
     cursor: pointer;
     font-size: medium;
-    
     color: var(--white);
-
 }
 
 /* Social links styles */
@@ -59,11 +57,33 @@ body {
 /* Responsive styles */
 @media only screen and (max-width: 800px) {
     .footer {
-        padding: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        text-align: center;
     }
 
     .footer h2 {
         font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-link {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .footer {
+        padding: 0.5rem;
+    }
+
+    .footer h2 {
+        font-size: 0.8rem;
     }
 
     .social-links {
@@ -71,6 +91,6 @@ body {
     }
 
     .social-link {
-        font-size: 1rem !important;
+        font-size: 1.2rem !important;
     }
 }
