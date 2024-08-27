@@ -1,106 +1,132 @@
-.list-row{
+.list-row {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  margin: 1.5rem  ;
-  padding: 1.5rem 9rem;
+  margin: 2.5rem 0.5rem;
+  padding: 0.5rem 25rem;
   width: 100%;
-  border-radius: 0.8rem;
+  border-radius: 0.75rem;
+  background-color: var(--black);
+  border: 2px solid var(--black);
+  cursor: pointer;
 }
 
 .list-row:hover {
-  background-color: var(--black);
+  border-color: var(--blue);
   transition: all 0.3s;
-  /* padding-right: 15rem; /* Decrease right padding */
-  /* padding-left: 10rem;  Increase left padding */ 
 }
 
-/* to implement no hover effect om coinpage */
-.list-row.no-hover:hover {
-  background-color: initial;
-}
-.list-row td{
-  text-align: left;
-  width: 18%;
+.list-row .chip-flex {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  align-items: center;
+  margin: 0.5rem 0.5rem;
 }
 
-.td-image{
-  width: 3rem !important;
-  margin-right:2rem;
-}
-.td-center-align{
+.price-chip {
+  border: 2px solid var(--blue);
+  border-radius: 2rem;
+  padding: 0.5rem 1.5rem;
   text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--blue);
 }
-.td-right-align{
-  flex-grow: 1;
-  text-align: right!important;
-  margin-top: auto;
+
+.price-chip:hover,
+.icon-chip:hover {
+  background-color: var(--blue);
+  color: var(--white);
+  transition: all 0.2s;
 }
-.current-price{
-  color: aliceblue;
-  cursor: grab;
+
+.chip-red {
+  border: 2px solid var(--red) !important;
+  color: var(--red) !important;
 }
- /* .list-row-link {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
-}  */
 
-@media only screen and (max-width: 900px) {
-  .icon-chip {
-    display: none;
-  }
-
-  .list-row {
-    font-size: 0.7rem;
-  }
-
-  .td-totalVolume {
-    display: none;
-  }
-
-  .Current-Price {
-    text-align: center !important;
-  }
-
-  .list-row {
-    width: 100%;
-    padding: 1.5rem 0rem;
-  }
-
-  .coin-logo {
-    height: 2rem;
-    width: 2rem;
-  }
-
-  .td-info {
-    width: 6rem !important;
-  }
+.chip-red:hover {
+  background-color: var(--red) !important;
+  color: var(--white) !important;
+  transition: all 0.2s;
 }
-@media only screen and (max-width: 600px) {
-  .Desktop-td-mkt,
-  .icon-chip{
-    display: none !important;
-  }
-  .mobile-td-mkt {
-    display: block !important;
-    text-align: left !important;
-  }
-  .td-image,
-  .symbol,
-  .name{
-    font-size: 0.6rem !important;
-  }
 
-  .td-info {
-    width: 4rem !important;
-  }
+.icon-chip {
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--blue);
+}
 
-  .td-image {
-    height: 2rem !important;
-    width: 2rem !important;
-  }
+.info-container {
+  margin: 0.5rem 2px;
+  padding: 0.3rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.price {
+  color: var(--blue);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.total_volume {
+  color: var(--gray);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: -17.5px;
+  padding: 0.3rem 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+}
+
+.favorite-icon-container {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  cursor: pointer;
+  color: var(--gray);
+  transition: color 0.3s;
+}
+
+.favorite-icon {
+  transition: color 0.3s;
+}
+
+.favorite-icon-active {
+  color: var(--red);
+}
+
+.tooltip-text {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.favorite-icon-container:hover .tooltip-text {
+  opacity: 1;
+}
+
+.tooltip-text-active {
+  opacity: 1;
 }

@@ -2,11 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./styles.css";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
+import StarOutlineIcon from "@mui/icons-material/StarOutline";
+import StarIcon from "@mui/icons-material/Star";
 import { Tooltip } from "@mui/material";
 import { convertNumber } from "../../../functions/convertNumber";
 import { Link } from "react-router-dom";
+import { saveItemToWatchlist } from "../../../functions/saveItemToWatchlist";
+import { removeItemToWatchlist } from "../../../functions/removeItemToWatchlist";
 
 function List({ coin, noHover }) {
+  const [isCoinAdded, setIsCoinAdded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -26,6 +31,23 @@ function List({ coin, noHover }) {
     };
   }, []);
 
+  useEffect(() => {
+    const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+    setIsCoinAdded(watchlist.includes(coin.id));
+  }, [coin.id]);
+
+  const handleFavoriteClick = (e) => {
+    e.preventDefault(); // Prevent default action
+
+    if (isCoinAdded) {
+      // Remove item from watchlist
+      removeItemToWatchlist(e, coin.id, (updated) => setIsCoinAdded(updated));
+    } else {
+      // Add item to watchlist
+      saveItemToWatchlist(e, coin.id, () => setIsCoinAdded(true));
+    }
+  };
+
   if (!coin || !coin.symbol) {
     return null; // or render a loading indicator
   }
@@ -35,77 +57,76 @@ function List({ coin, noHover }) {
       to={`/coin/${coin.id}`}
       className={`list-link ${noHover ? "no-hover" : ""}`}
     >
-      <tr className={`list-row ${noHover ? "no-hover" : ""}`}>
-        {coin && (
-          <td className="td-image">
-            <img src={coin.image} alt="coin" className="coin-logo" />
-          </td>
-        )}
-        <td className="td-info">
+      <div
+        className={`list-row ${noHover ? "no-hover" : ""}`}
+      >
+        <div className="td-image">
+          <img src={coin.image} alt="coin" className="coin-logo" />
+        </div>
+        <div className="td-info">
           <div className="name-col">
             <p className="symbol">{coin.symbol}</p>
             <p className="name">{coin.name}</p>
           </div>
-        </td>
-        {coin.price_change_percentage_24h > 0 ? (
-          <td className="chip-flex">
-            <div className="price-chip">
-              {coin.price_change_percentage_24h.toFixed(2)}%
-            </div>
-            <div className="icon-chip">
-              <TrendingUpRoundedIcon />
-            </div>
-          </td>
-        ) : (
-          <td className="chip-flex">
-            <div className="price-chip chip-red">
-              {coin.price_change_percentage_24h.toFixed(2)}%
-            </div>
-            <div className="icon-chip chip-red">
-              <TrendingDownRoundedIcon />
-            </div>
-          </td>
-        )}
-        <Tooltip title="Current Price">
-          <td>
-            <h3
-              className="price td-center-align"
-              style={{
-                color:
-                  coin.price_change_percentage_24h < 0
-                    ? "var(--red)"
-                    : "var(--blue)",
-              }}
-            >
-              ₹{coin.current_price.toLocaleString()}
-            </h3>
-          </td>
-        </Tooltip>
-        <Tooltip title="Total Volume" placement="bottom-end">
-          <td className="coin-name td-totalVolume">
-            <p className="total_volume td-right-align ">
-              Vol: ₹{coin.total_volume.toLocaleString()}
+        </div>
+        <div className="chip-flex">
+          {coin.price_change_percentage_24h > 0 ? (
+            <>
+              <div className="price-chip">
+                {coin.price_change_percentage_24h.toFixed(2)}%
+              </div>
+              <div className="icon-chip">
+                <TrendingUpRoundedIcon />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="price-chip chip-red">
+                {coin.price_change_percentage_24h.toFixed(2)}%
+              </div>
+              <div className="icon-chip chip-red">
+                <TrendingDownRoundedIcon />
+              </div>
+            </>
+          )}
+        </div>
+        <div className="info-container">
+          <h3
+            className="price"
+            style={{
+              color:
+                coin.price_change_percentage_24h < 0
+                  ? "var(--red)"
+                  : "var(--blue)",
+            }}
+          >
+            ₹{coin.current_price.toLocaleString()}
+          </h3>
+          <p className="total_volume">
+            Vol: ₹{coin.total_volume.toLocaleString()}
+          </p>
+          {isMobile ? (
+            <p className="total_volume">
+              {convertNumber(coin.market_cap)}
             </p>
-          </td>
-        </Tooltip>
-        {isMobile ? (
-          <Tooltip title="Market Cap" placement="bottom-end">
-            <td className="mobile-td-mkt">
-              <p className="total_volume td-right-align">
-                ₹{convertNumber(coin.market_cap)}
-              </p>
-            </td>
-          </Tooltip>
-        ) : (
-          <Tooltip title="Market Cap" placement="bottom-end">
-            <td className="Desktop-td-mkt">
-              <p className="total_volume td-right-align">
-                Cap: ₹{coin.market_cap.toLocaleString()}
-              </p>
-            </td>
-          </Tooltip>
-        )}
-      </tr>
+          ) : (
+            <p className="total_volume">
+              Cap: ₹{coin.market_cap.toLocaleString()}
+            </p>
+          )}
+        </div>
+        <div
+          className={`favorite-icon-container ${isCoinAdded ? 'favorite-icon-active' : ''}`}
+          onClick={handleFavoriteClick}
+        >
+          <div className="favorite-icon">
+            {isCoinAdded ? <StarIcon /> : <StarOutlineIcon />}
+          </div>
+          <span className={`tooltip-text ${isCoinAdded ? 'tooltip-text-active' : ''}`}>
+            {isCoinAdded ? 'Added to watchlist !!!' : 'Want to add this in watchlist ??'}
+          </span>
+        </div>
+      </div>
     </Link>
   );
 }

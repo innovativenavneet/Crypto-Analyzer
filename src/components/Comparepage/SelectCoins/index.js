@@ -28,8 +28,18 @@ function SelectCoins({ crypto1, crypto2, handleCoinChange }) {
   }, []);
 
   async function getData() {
-    const myCoins = await get100Coins();
-    setAllCoins(myCoins);
+    try {
+      const myCoins = await get100Coins();
+      if (Array.isArray(myCoins)) {
+        setAllCoins(myCoins);
+      } else {
+        console.error('Data fetched is not an array:', myCoins);
+        setAllCoins([]);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setAllCoins([]);
+    }
   }
 
   return (
@@ -41,15 +51,14 @@ function SelectCoins({ crypto1, crypto2, handleCoinChange }) {
         label={"crypto 1"}
         onChange={(event) => handleCoinChange(event, false)}
       >
-        {allCoins
-        
-        .filter((item) => item.id !== crypto2) //this will help to recognise that if one coin 
-                                              // there is no place for 2nd coin to select 
-         .map((coin, i) => (  // The index 'i' is now properly defined here
-          <MenuItem key={i} value={coin.id}>
-            {coin.name}
-          </MenuItem>
-        ))}
+        {allCoins.length > 0 &&
+          allCoins
+            .filter((item) => item.id !== crypto2)
+            .map((coin, i) => (
+              <MenuItem key={i} value={coin.id}>
+                {coin.name}
+              </MenuItem>
+            ))}
       </Select>
       <p>Crypto 2</p>
       <Select
@@ -58,15 +67,14 @@ function SelectCoins({ crypto1, crypto2, handleCoinChange }) {
         label={"crypto 2"}
         onChange={(event) => handleCoinChange(event, true)}
       >
-          {allCoins
-        
-        .filter((item) => item.id !== crypto1) //this will help to recognise that if one coin 
-                                              // there is no place for 2nd coin to select 
-         .map((coin, i) => (  // The index 'i' is now properly defined here
-          <MenuItem key={i} value={coin.id}>
-            {coin.name}
-          </MenuItem>
-        ))}
+        {allCoins.length > 0 &&
+          allCoins
+            .filter((item) => item.id !== crypto1)
+            .map((coin, i) => (
+              <MenuItem key={i} value={coin.id}>
+                {coin.name}
+              </MenuItem>
+            ))}
       </Select>
     </div>
   );
