@@ -132,6 +132,8 @@ function Comparepage() {
             />
           </div>
           <CoinInfo heading={crypto1Data.name} desc={crypto1Data.desc} />
+         
+
           <CoinInfo heading={crypto2Data.name} desc={crypto2Data.desc} />
           <Footer />
         </>

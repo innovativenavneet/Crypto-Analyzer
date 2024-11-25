@@ -5,7 +5,10 @@ import Button from "../Button";
 import "./style.css";
 
 function Header() {
+
+
   return (
+    <>  
     <div className="navbar">
       <h1 className="logo">
         CryptoAnalyzer<span style={{ color: "var(--blue)" }}>.</span>
@@ -16,16 +19,13 @@ function Header() {
         </Link>
 
         <Link to="/Comparepage">
-
           <p className="link" onClick={() => console.log("Compare clicked")}>
-          
-          Compare</p>
-      
-      
+            Compare
+          </p>
         </Link>
 
         <Link to="/WatchList">
-          <p className="link" >Watchlist</p>
+          <p className="link">Watchlist</p>
         </Link>
 
         <Link to="/Dashboard">
@@ -36,10 +36,16 @@ function Header() {
           />
         </Link>
       </div>
+
+  
+      </div>
+
+      {/* Mobile Drawer */}
       <div className="mobile-drawer">
         <AnchorTemporaryDrawer />
       </div>
-    </div>
+    
+     </>
   );
 }
 

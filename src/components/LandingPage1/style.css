@@ -1,0 +1,167 @@
+/* Parent container (overlay) */
+.auth-modal-overlay {
+  position: fixed; /* Full-screen overlay */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);  /* Shadow for the modal background */
+  z-index: 1000; /* Ensures it sits above the rest of the content */
+}
+
+/* Modal box */
+.auth-modal {
+  position: absolute; /* Position relative to the overlay */
+  top: 50%; /* Center vertically */
+  left: 80%; /* Center horizontally */
+  transform: translate(80%, -10%); /* Offset by half the modal's width and height */
+  /* background: white; */
+  border-radius: 50px;
+  padding: 30px 15px;
+  width: 100%;
+  max-width: 500px; /* Restrict the modal's size */
+  /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); */
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.Header1 {
+  color: var(--white);
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.Header2 {
+  color: var(--blue); /* Use the blue variable */
+
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.auth-modal input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.action-button {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 15px;
+  cursor: pointer;
+  width: 90%;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.action-button:hover {
+  background: linear-gradient(45deg, #0056b3, #003c7f);
+}
+
+.forgot-password {
+  margin-top: 10px;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+.toggle-mode {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.toggle-mode span {
+  color: var(--white);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.social-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s;
+  width: 90%;
+}
+
+.social-login img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.social-login:hover {
+  transform: scale(1.05);
+}
+
+.google-login {
+  background: #fff;
+}
+
+.github-login {
+  background: #333;
+  color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-modal {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .auth-modal h2 {
+    font-size: 1.5rem;
+  }
+
+  .auth-modal input {
+    font-size: 0.95rem;
+  }
+
+  .action-button {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+
+  .social-login {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .social-login img {
+    width: 18px;
+    height: 18px;
+  }
+}
