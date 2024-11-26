@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css"; // Include the CSS file
+import "./style.css"; 
 import {
   auth,
   signInWithEmailAndPasswordHandler,
@@ -16,13 +16,35 @@ const AuthModal = ({ onClose }) => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Validate Email
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Validate Input Before Proceeding
+  const validateInputs = () => {
+    if (!isValidEmail(email)) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+    if (!password || password.length < 6) {
+      alert("Password must be at least 6 characters long.");
+      return false;
+    }
+    return true;
+  };
 
   // Handle Login with Email
   const handleLogin = async () => {
+    if (!validateInputs()) return;
+
     try {
       await signInWithEmailAndPasswordHandler(email, password);
       alert("Logged in successfully!");
-      onClose();
+      onClose(); // Close the modal only after success
     } catch (error) {
       alert(`Login failed: ${error.message}`);
     }
@@ -30,10 +52,12 @@ const AuthModal = ({ onClose }) => {
 
   // Handle Signup with Email for new user
   const handleSignUp = async () => {
+    if (!validateInputs()) return;
+
     try {
       await signUpWithEmailAndPassword(email, password);
       alert("Account created successfully!");
-      onClose(); // Close the modal
+      onClose(); // Close the modal only after success
     } catch (error) {
       alert(`Sign-up failed: ${error.message}`);
     }
@@ -44,7 +68,7 @@ const AuthModal = ({ onClose }) => {
     try {
       await signInWithGoogle();
       alert("Signed in with Google successfully!");
-      onClose(); // Close the modal
+      onClose(); // Close the modal only after success
     } catch (error) {
       alert(`Google Sign-In failed: ${error.message}`);
     }
@@ -55,7 +79,7 @@ const AuthModal = ({ onClose }) => {
     try {
       await signInWithGitHub();
       alert("Signed in with GitHub successfully!");
-      onClose(); // Close the modal
+      onClose(); // Close the modal only after success
     } catch (error) {
       alert(`GitHub Sign-In failed: ${error.message}`);
     }
@@ -72,12 +96,34 @@ const AuthModal = ({ onClose }) => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
         />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
+        <div style={{ position: "relative", width: "90%" }}>
+          <input
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            style={{
+              width: "100%",
+              paddingRight: "2.5rem", // Add space for the eye button
+            }}
+          />
+          <button
+            type="button"
+            className="toggle-password-visibility"
+            onClick={() => setShowPassword((prev) => !prev)}
+            style={{
+              position: "absolute",
+              right: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            {showPassword ? "🙈" : "👁️"}
+          </button>
+        </div>
         <button
           className="action-button"
           onClick={isSignUpMode ? handleSignUp : handleLogin}
