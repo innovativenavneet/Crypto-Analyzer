@@ -14,7 +14,7 @@ function Footer() {
   return (
     <div className="footer">
       <h2 className="logo" onClick={topFunction}>
-      Maintained & Developed by<span style={{ color: "var(--blue)" }}> -Navneet Prakash</span>
+      Maintained & Developed by<span style={{ color: "var(--blue)" }}> -Navneet Prakash and Pratik Anand</span>
       </h2>
       
       <div className="social-links">
