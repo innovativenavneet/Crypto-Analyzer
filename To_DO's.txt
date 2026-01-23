@@ -1,0 +1,5 @@
+1. have to optimise the codebase to add redux in it so that whenever api calls it will store coins data into store 
+2. have to optimise styling to make it more resposive 
+3. will search for other and better api options if availble so that can add this and avoid redux 
+4. the auth flow and screens should be resrtuctured and redesigned 
+5. near the dashboard there will be options to add waller and whole blockchain wil sit there only 
