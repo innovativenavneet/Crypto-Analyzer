@@ -4,7 +4,6 @@ import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import StarIcon from "@mui/icons-material/Star";
-import { Tooltip } from "@mui/material";
 import { convertNumber } from "../../../functions/convertNumber";
 import { Link } from "react-router-dom";
 import { saveItemToWatchlist } from "../../../functions/saveItemToWatchlist";

@@ -6,10 +6,6 @@ import {
   signInWithGoogle,
   signInWithGitHub,
 } from "../../firebase";
-import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
-
-// const googleProvider = new GoogleAuthProvider();
-// const githubProvider = new GithubAuthProvider();
 
 const AuthModal = ({ onClose }) => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
