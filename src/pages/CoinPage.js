@@ -29,8 +29,6 @@ function CoinPage() {
 
       const prices = await getPrices(id, days, priceType);
       if (prices && prices.length > 0) {
-        console.log("hey yaaa");
-
         settingChartData(setChartData, prices);
         setIsLoading(false);
       } else {

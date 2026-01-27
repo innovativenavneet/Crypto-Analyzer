@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "./style.css"; 
+import "./style.css";
 import {
-  auth,
   signInWithEmailAndPasswordHandler,
   signUpWithEmailAndPassword,
   signInWithGoogle,
@@ -9,8 +8,8 @@ import {
 } from "../../firebase";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
-const googleProvider = new GoogleAuthProvider();
-const githubProvider = new GithubAuthProvider();
+// const googleProvider = new GoogleAuthProvider();
+// const githubProvider = new GithubAuthProvider();
 
 const AuthModal = ({ onClose }) => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
@@ -20,7 +19,8 @@ const AuthModal = ({ onClose }) => {
 
   // Validate Email
   const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
   };
 

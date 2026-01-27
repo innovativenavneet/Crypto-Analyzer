@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
@@ -9,13 +9,26 @@ import Comparepage from "./pages/Comparepage";
 import CoinPage from "./pages/CoinPage";
 import AuthModal from "../src/components/LandingPage1/index";
 import "../src/components/Auth/style.css";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
 
 function App() {
-  const [isAuthModalOpen, setAuthModalOpen] = useState(true);
+  // Tracks whether we've received the initial auth state from Firebase.
+  const [authChecked, setAuthChecked] = useState(false);
+  const [isAuthModalOpen, setAuthModalOpen] = useState(false);
 
   const handleCloseAuthModal = () => {
     setAuthModalOpen(false);
   };
+
+  useEffect(() => {
+    // Keep UI in sync with Firebase auth across refresh.
+    const unsub = onAuthStateChanged(auth, (user) => {
+      setAuthModalOpen(!user);
+      setAuthChecked(true);
+    });
+    return () => unsub();
+  }, []);
 
   return (
     <div className="App">
@@ -28,7 +41,9 @@ function App() {
           <Route path="/coin/:id" element={<CoinPage />} />
         </Routes>
       </BrowserRouter>
-      {isAuthModalOpen && <AuthModal onClose={handleCloseAuthModal} />}
+      {authChecked && isAuthModalOpen && (
+        <AuthModal onClose={handleCloseAuthModal} />
+      )}
     </div>
   );
 }

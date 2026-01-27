@@ -61,7 +61,6 @@ const AuthModal = ({ onClose }) => {
 const handleEmailSignIn = async () => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    console.log("Signed in with Email and Password successfully.");
     onClose(); // Close the modal on successful login
   } catch (error) {
     // Log the specific error message for debugging
