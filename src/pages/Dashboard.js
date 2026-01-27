@@ -54,25 +54,25 @@ function Dashboard() {
   };
   return (
     <div>
-   
-      {isloading ? (
-        <Loader />
-      ) : (
-        <div>
-             <Header />
-             <BackToTOP />
-          <Search search={search} onSearchChange={onSearchChange} />
-          <TabsComponent coins={search ? filterCoins : pageCoins} />
-          {!search && (
-            <PaginationComponent
-              page={page}
-              handlePageChange={handlePageChange}
-            />
-          )}
-           <Footer />
-        </div>
-      )}
-       
+      <Header />
+      <div style={{ flexGrow: 1 }}>
+        {isloading ? (
+          <Loader />
+        ) : (
+          <>
+            <BackToTOP />
+            <Search search={search} onSearchChange={onSearchChange} />
+            <TabsComponent coins={search ? filterCoins : pageCoins} />
+            {!search && (
+              <PaginationComponent
+                page={page}
+                handlePageChange={handlePageChange}
+              />
+            )}
+          </>
+        )}
+      </div>
+      <Footer />
     </div>
   );
 }

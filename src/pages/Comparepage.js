@@ -96,48 +96,48 @@ function Comparepage() {
   };
 
   return (
-    <div>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <Header />
-          <div className="coins-days-flex">
-            <SelectCoins
-              crypto1={crypto1}
-              handleCoinChange={handleCoinChange}
-              crypto2={crypto2}
-            />
-            <SelectDays
-              days={days}
-              handleDaysChange={handleDaysChange}
-              noPTag={true}
-            />
-          </div>
-          <div className="gray-wrapper" style={{ padding: "0rem 1rem" }}>
-            <List coin={crypto1Data} />
-          </div>
-          <div className="gray-wrapper" style={{ padding: "0rem 1rem" }}>
-            <List coin={crypto2Data} />
-          </div>
-          <div className="gray-wrapper">
-            <TogglePriceType
-              priceType={priceType}
-              handlePriceTypeChange={handlePriceTypeChange}
-            />
-            <LineChart
-              chartData={chartData}
-              priceType={priceType}
-              multiAxis={true}
-            />
-          </div>
-          <CoinInfo heading={crypto1Data.name} desc={crypto1Data.desc} />
-         
-
-          <CoinInfo heading={crypto2Data.name} desc={crypto2Data.desc} />
-          <Footer />
-        </>
-      )}
+    <div s>
+      <Header />
+      <div style={{ flexGrow: 1 }}>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <div className="coins-days-flex">
+              <SelectCoins
+                crypto1={crypto1}
+                handleCoinChange={handleCoinChange}
+                crypto2={crypto2}
+              />
+              <SelectDays
+                days={days}
+                handleDaysChange={handleDaysChange}
+                noPTag={true}
+              />
+            </div>
+            <div className="gray-wrapper" style={{ padding: "0rem 1rem" }}>
+              <List coin={crypto1Data} />
+            </div>
+            <div className="gray-wrapper" style={{ padding: "0rem 1rem" }}>
+              <List coin={crypto2Data} />
+            </div>
+            <div className="gray-wrapper">
+              <TogglePriceType
+                priceType={priceType}
+                handlePriceTypeChange={handlePriceTypeChange}
+              />
+              <LineChart
+                chartData={chartData}
+                priceType={priceType}
+                multiAxis={true}
+              />
+            </div>
+            <CoinInfo heading={crypto1Data.name} desc={crypto1Data.desc} />
+            <CoinInfo heading={crypto2Data.name} desc={crypto2Data.desc} />
+          </>
+        )}
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -66,29 +66,29 @@ function CoinPage() {
   }, [id, getData]);
 
   return (
-    <div>
-
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-              <Header />
-          <div className="gray-wrapper">
-            <List coin={coin} noHover />
-          </div>
-          <div className="gray-wrapper">
-            <SelectDays days={days} handleDaysChange={handleDaysChange} />
-            <TogglePriceType
-              priceType={priceType}
-              handlePriceTypeChange={handlePriceTypeChange}
-            />
-            <LineChart chartData={chartData} priceType={priceType} />
-          </div>
-          <CoinInfo heading={coin.name} desc={coin.desc} />
-          <Footer/>
-        </>
-      )}
-
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <Header />
+      <div style={{ flexGrow: 1 }}>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <div className="gray-wrapper">
+              <List coin={coin} noHover />
+            </div>
+            <div className="gray-wrapper">
+              <SelectDays days={days} handleDaysChange={handleDaysChange} />
+              <TogglePriceType
+                priceType={priceType}
+                handlePriceTypeChange={handlePriceTypeChange}
+              />
+              <LineChart chartData={chartData} priceType={priceType} />
+            </div>
+            <CoinInfo heading={coin.name} desc={coin.desc} />
+          </>
+        )}
+      </div>
+      <Footer />
     </div>
   );
 }
