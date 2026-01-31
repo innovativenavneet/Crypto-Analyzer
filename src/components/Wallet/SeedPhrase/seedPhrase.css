@@ -1,0 +1,203 @@
+.seed-phrase-container {
+  min-height: 100vh;
+  background-color: var(--black);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.seed-phrase-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.seed-phrase-header h2 {
+  font-size: 2.5rem;
+  margin: 0 0 10px 0;
+  color: var(--gray);
+  font-weight: 700;
+}
+
+.seed-phrase-header p {
+  font-size: 1rem;
+  color: var(--darkgray);
+  margin: 0;
+  font-weight: 500;
+}
+
+.seed-phrase-button-wrapper {
+  margin-bottom: 40px;
+}
+
+.seed-phrase-button-wrapper button {
+  padding: 10px 24px !important;
+  font-size: 0.9rem !important;
+  border-radius: 8px !important;
+  background: var(--green) !important;
+  color: var(--black) !important;
+  border: none !important;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.seed-phrase-button-wrapper button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.seed-phrase-content {
+  width: 100%;
+  max-width: 800px;
+}
+
+.seed-phrase-words {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 30px;
+  padding: 30px;
+  background: var(--darkgray);
+  border-radius: 16px;
+  border: 2px solid var(--gray);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.seed-word-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 2px solid rgba(59, 130, 246, 0.5);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.seed-word-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(59, 130, 246, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.seed-word-box:hover {
+  border-color: rgba(59, 130, 246, 0.8);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.seed-word-box:hover::before {
+  left: 100%;
+}
+
+.seed-word-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  background: var(--green);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--black);
+  flex-shrink: 0;
+}
+
+.seed-word-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.5px;
+  flex: 1;
+}
+
+.copy-button {
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--green);
+  color: var(--black);
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.copy-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.copy-button:active {
+  transform: translateY(0);
+}
+
+.copy-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: var(--green);
+  color: var(--black);
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  z-index: 2000;
+  box-shadow: 0 8px 24px rgba(79, 232, 87, 0.4);
+  animation: popupAppear 0.3s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes popupAppear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .seed-phrase-container {
+    padding: 20px 10px;
+  }
+
+  .seed-phrase-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .seed-phrase-words {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .seed-word-box {
+    padding: 10px 12px;
+  }
+}

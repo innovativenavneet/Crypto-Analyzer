@@ -7,8 +7,8 @@ import Dashboard from "./pages/Dashboard";
 import WatchList from "./pages/WatchList";
 import Comparepage from "./pages/Comparepage";
 import CoinPage from "./pages/CoinPage";
+import WalletPage from "./pages/walletPage";
 import AuthModal from "./components/AuthFlow/index";
-import Wallet from "./WalletFlow/pages/Wallet";
 import "../src/components/Auth/style.css";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
@@ -40,7 +40,7 @@ function App() {
           <Route path="/WatchList" element={<WatchList />} />
           <Route path="/Comparepage" element={<Comparepage />} />
           <Route path="/coin/:id" element={<CoinPage />} />
-          <Route path="/wallet" element={<Wallet />} />
+          <Route path="/wallet" element={<WalletPage />} />
         </Routes>
       </BrowserRouter>
       {authChecked && isAuthModalOpen && (
