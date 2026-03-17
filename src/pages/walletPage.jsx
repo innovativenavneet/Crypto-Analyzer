@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import { generateMnemonic } from "bip39";
 import Header from "../components/Common/Header";
 import Footer from "../components/Common/Footer";
-import SeedPhrase from "../components/Wallet/seedPhrase";
+import SeedPhrase from "../components/Wallet/SeedPhrase/seedPhrase";
 import { SolanaWallet } from "../components/Wallet/Solana/solana";
 import "./walletPage.css";
 
 function WalletPage() {
+  // a 12, 18, or 24-word "seed phrase" (or secret phrase) that acts as the master key to your crypto wallet.
+  // It allows you to recover your wallet, SOL, and tokens across different apps or if your device is lost
   const [mnemonic, setMnemonic] = useState("");
 
-  const handleMnemonicGenerated = (newMnemonic) => {
-    setMnemonic(newMnemonic);
+  const handleGenerate = () => {
+    const mn = generateMnemonic();
+    setMnemonic(mn);
   };
 
   return (
@@ -23,7 +27,7 @@ function WalletPage() {
 
         <div className="wallet-page-content">
           <div className="wallet-section seed-section">
-            <SeedPhrase onMnemonicGenerated={handleMnemonicGenerated} />
+            <SeedPhrase mnemonic={mnemonic} onGenerate={handleGenerate} />
           </div>
 
           <div className="wallet-divider"></div>

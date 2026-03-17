@@ -17,11 +17,21 @@ export function SolanaWallet({ mnemonic }) {
     }
 
     try {
+      // mnemonicToSeed converts a mnemonic (seed phrase) into a cryptographic seed.
+      // In other words mnemonicToSeed Converts human-readable words into a binary seed.
       const seed = mnemonicToSeed(mnemonic);
-      console.log("seed ", seed);
+      /* 
+      What it means:
+      44' → BIP-44 standard
+      501' → Solana’s coin type
+      ${currentIndex} → wallet number (0, 1, 2, ...)
+      0' → account/change level
+      */
       const path = `m/44'/501'/${currentIndex}'/0'`;
+
       const derivedSeed = derivePath(path, seed.toString("hex")).key;
-      console.log("derived seed ", derivedSeed);
+      // Takes:
+      // original seed  + derivation path == Produces a 32-byte derived seed
       const secret = nacl.sign.keyPair.fromSeed(derivedSeed).secretKey;
       const keypair = Keypair.fromSecretKey(secret);
 
