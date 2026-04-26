@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {
   signInWithEmailAndPasswordHandler,
   signUpWithEmailAndPassword,
@@ -15,7 +17,6 @@ const AuthModal = ({ onClose }) => {
 
   // Validate Email
   const isValidEmail = (email) => {
-    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
   };
@@ -82,75 +83,69 @@ const AuthModal = ({ onClose }) => {
   };
 
   return (
-    <div className="auth-modal-overlay">
-      <div className="auth-modal">
-        <h2 className="Header1">{isSignUpMode ? "Sign Up" : "Log In"}</h2>
-        <p className="Header2">Welcome to CryptoAnalyzer.</p>
+    <div className="auth-modal">
+      <div className="auth-card">
+        <div className="auth-card-header">
+          <h2>{isSignUpMode ? "Sign Up" : "Log In"}</h2>
+        </div>
+
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
         />
-        <div style={{ position: "relative", width: "90%" }}>
+        <div className="password-input-wrapper">
           <input
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-            style={{
-              width: "100%",
-              paddingRight: "2.5rem", // Add space for the eye button
-            }}
           />
           <button
             type="button"
             className="toggle-password-visibility"
             onClick={() => setShowPassword((prev) => !prev)}
-            style={{
-              position: "absolute",
-              right: "10px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-            }}
           >
-            {showPassword ? "🙈" : "👁️"}
+            {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
           </button>
         </div>
+
         <button
           className="action-button"
           onClick={isSignUpMode ? handleSignUp : handleLogin}
         >
           {isSignUpMode ? "SIGN UP" : "LOGIN"}
         </button>
+
         {!isSignUpMode && (
           <a className="forgot-password" href="/forgot-password">
             Forgot your password? Get help
           </a>
         )}
+
         <p className="toggle-mode">
           {isSignUpMode ? "Already a member?" : "Not a member?"}{" "}
           <span onClick={() => setIsSignUpMode(!isSignUpMode)}>
             {isSignUpMode ? "Log In" : "Sign Up"}
           </span>
         </p>
-        <hr />
+
+        <div className="divider">or continue with</div>
+
         <button className="social-login google-login" onClick={handleGoogleSignIn}>
           <img
             src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
             alt="Google Logo"
           />
-          Sign in with Google
+          Log in with Google
         </button>
         <button className="social-login github-login" onClick={handleGitHubSignIn}>
           <img
             src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
             alt="GitHub Logo"
           />
-          Sign in with GitHub
+          Log in with GitHub
         </button>
       </div>
     </div>

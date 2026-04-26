@@ -6,57 +6,6 @@ const AuthModal = ({ onClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
- 
-  // for if the user is already register 
-  // import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
-  // const handleEmailSignIn = async () => {
-  //   try {
-  //     // Attempt to log in the user
-  //     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-  //     console.log("Signed in successfully:", userCredential.user);
-  //     alert("Logged in successfully!");
-  //     onClose(); // Close the modal on successful login
-  //   } catch (error) {
-  //     console.error("Error signing in with email and password:", error.code);
-  
-  //     // If the error is "user not found", offer to create a new account
-  //     if (error.code === "auth/user-not-found") {
-  //       const shouldSignUp = window.confirm(
-  //         "No account found with this email. Would you like to create a new account?"
-  //       );
-  
-  //       if (shouldSignUp) {
-  //         handleSignUp(); // Call the sign-up handler
-  //       }
-  //     } else {
-  //       // For other errors, show the error message
-  //       alert(`Error: ${error.message}`);
-  //     }
-  //   }
-  // };
-  
-  // // Sign-Up Handler for New Users
-  // const handleSignUp = async () => {
-  //   try {
-  //     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-  //     console.log("Account created successfully:", userCredential.user);
-  //     alert("Account created successfully! You are now logged in.");
-  //     onClose(); // Close the modal on successful sign-up
-  //   } catch (error) {
-  //     console.error("Error during account creation:", error.code);
-  //     alert(`Error: ${error.message}`);
-  //   }
-  // };
-  
-  
-
-
-
-
-
-
-
   // Email and Password Sign-In Handler fir existing user 
 const handleEmailSignIn = async () => {
   try {
@@ -103,8 +52,8 @@ const handleEmailSignIn = async () => {
           placeholder="Password"
         />
         {/* Sign-In Buttons */}
-        <button onClick={handleEmailSignIn}>Sign In with Email</button>
-        <button onClick={handleGoogleSignIn}>Sign In with Google</button>
+        <button onClick={handleEmailSignIn}>Log In with Email</button>
+        <button onClick={handleGoogleSignIn}>Log In with Google</button>
         <button onClick={onClose}>Close</button>
       </div>
     </div>

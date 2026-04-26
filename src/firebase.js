@@ -28,9 +28,10 @@ const auth = getAuth(app);
 
 // Ensure auth survives refresh/browser restart.
 // (Firebase defaults are usually persistent, but this makes it explicit.)
-setPersistence(auth, browserLocalPersistence).catch((error) => {
-  console.error("Error setting auth persistence:", error?.message || error);
-});
+
+// setPersistence(auth, browserLocalPersistence).catch((error) => {
+//   console.error("Error setting auth persistence:", error?.message || error);
+// });
 
 // Providers for Google and GitHub
 const googleProvider = new GoogleAuthProvider();
