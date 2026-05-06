@@ -27,7 +27,7 @@ function CoinPage() {
     if (data) {
       CoinObject(setCoin, data);
 
-      const prices = await getPrices(id, days, priceType);
+      const prices = await getPrices(id, days,  priceType);
       if (prices && prices.length > 0) {
         settingChartData(setChartData, prices);
         setIsLoading(false);
